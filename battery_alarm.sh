@@ -3,7 +3,7 @@ VAL="0"
 while :; do
 	BAT=`cat /sys/class/power_supply/axp288_fuel_gauge/capacity`
 	LIMIT="10"
-	if [ $(("$BAT" < "$LIMIT")) ]; then
+	if [ $LIMIT -gt $BAT ]; then
 		light -S $VAL
 		sleep 0.1
 		if [ "$VAL" -eq "0" ]; then
